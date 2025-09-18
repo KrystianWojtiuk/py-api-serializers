@@ -30,6 +30,6 @@ class MovieSerializer(ModelSerializer):
 class MovieSessionSerializer(ModelSerializer):
     class Meta:
         model = MovieSession
-    fields = '__all__'
+        fields = '__all__'
 
 
