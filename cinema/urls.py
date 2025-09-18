@@ -1,1 +1,1 @@
-# write urls here
+app_name = "cinema"
