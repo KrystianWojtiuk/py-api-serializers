@@ -24,21 +24,20 @@ class ActorSerializer(serializers.ModelSerializer):
 class MovieSerializer(serializers.ModelSerializer):
     class Meta:
         model = Movie
-        fields = '__all__'
+        fields = ("id", "title", "description", "duration", "genres", "actors")
 
 
-class MovieListSerializer(serializers.ModelSerializer):
+class MovieListSerializer(MovieSerializer):
     genres = serializers.StringRelatedField(many=True)
     actors = serializers.StringRelatedField(many=True)
 
-    class Meta:
-        model = Movie
-        fields = ("id", "title", "description", "duration", "genres", "actors")
+
+class MovieRetrieveSerializer(MovieSerializer):
+    genres = GenreSerializer(many=True)
+    actors = ActorSerializer(many=True)
 
 
 class MovieSessionSerializer(serializers.ModelSerializer):
     class Meta:
         model = MovieSession
         fields = '__all__'
-
-
